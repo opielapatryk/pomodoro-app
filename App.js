@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Timer/>  
+      <Timer longerTime={25*60} shorterTime={5*60} />  
       <StatusBar style="auto" />
     </View>
   );
@@ -26,12 +26,9 @@ const styles = StyleSheet.create({
   }
 });
 
-const longerTime = 25*1
-const shorterTime = 5*1
-let newSeconds = longerTime
 
-const Timer = () => {
-  const [getSeconds, setSeconds] = useState(longerTime);
+const Timer = props => {
+  const [getSeconds, setSeconds] = useState(props.longerTime);
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
@@ -76,12 +73,12 @@ const Timer = () => {
 
       <View style={styles.rowflex}>
         <Button title='25' onPress={() => { 
-          setSeconds(longerTime)
-          newSeconds = longerTime
+          setSeconds(props.longerTime)
+          newSeconds = props.longerTime
           }}></Button>
         <Button title='5' onPress={() => { 
-          setSeconds(shorterTime) 
-          newSeconds = shorterTime 
+          setSeconds(props.shorterTime) 
+          newSeconds = props.shorterTime
           }}></Button>
       </View>
 
