@@ -2,8 +2,8 @@ import { Button, Text, View, Vibration } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { styles } from './styles';
 
-export const Timer = props => {
-  const [getSeconds, setSeconds] = useState(props.longerTime);
+export function Timer({longerTime,shorterTime}) {
+  const [getSeconds, setSeconds] = useState(longerTime);
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
@@ -48,12 +48,12 @@ export const Timer = props => {
 
       <View style={styles.rowflex}>
         <Button title='25' onPress={() => {
-          setSeconds(props.longerTime);
-          newSeconds = props.longerTime;
+          setSeconds(longerTime);
+          newSeconds = longerTime;
         }}></Button>
         <Button title='5' onPress={() => {
-          setSeconds(props.shorterTime);
-          newSeconds = props.shorterTime;
+          setSeconds(shorterTime);
+          newSeconds = shorterTime;
         }}></Button>
       </View>
 
